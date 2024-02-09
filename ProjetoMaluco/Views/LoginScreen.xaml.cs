@@ -28,37 +28,56 @@ namespace ProjetoMaluco.Views
         private void BtnEntrar_Click(object sender, RoutedEventArgs e)
         {
             //Tratamento de Usuário e Senha
-            string Usuario = TxtBoxUser.Text;
-            Usuario = Usuario.Trim();
-            string Senha = TxtBoxPass.Password;
+            string usuario = TxtBoxUser.Text;
+            usuario = usuario.Trim();
+            string senha = TxtBoxPass.Password;
 
-            if (string.IsNullOrWhiteSpace(Usuario))
-            {
-                MessageBox.Show("'Usuário' é de preenchimento obrigatório", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            
-            if (string.IsNullOrWhiteSpace(Senha))
-            {
-                MessageBox.Show("'Senha' é de preenchimento obrigatório", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            //Validação de Logon
-            if (Usuario == "teste" & Senha == "1234")
+            //Chamar Função de Validação
+            bool loginValido = ValidaLogin(usuario, senha);
+            if (loginValido)
             {
                 Close();
             }
-            else
-            {
-                MessageBox.Show("'Senha ou Usuário' não são válidos, preencha com Usuário e Senha validos", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+
         }
 
         private void BtnSair_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+
+        //Função Validação Login
+        public bool ValidaLogin(string usuario, string senha)
+        {
+            // Validações de campo vazio
+            if (string.IsNullOrWhiteSpace(usuario))
+            {
+                MessageBox.Show("'Usuário' é de preenchimento obrigatório", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(senha))
+            {
+                MessageBox.Show("'Senha' é de preenchimento obrigatório", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            // Validação de login
+            if (usuario == "teste" && senha == "1234")
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("'Senha ou Usuário' não são válidos, preencha com Usuário e Senha válidos", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+
+        }
+
+
+
     }
 }
