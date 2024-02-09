@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetoMaluco"
         mc:Ignorable="d"
-        Title="LoginScreen" 
+        Title="Pesquisa Contratos" 
         Width="1280"
         Height="720"
         WindowStartupLocation="CenterScreen"
@@ -16,12 +16,68 @@
         Background="#292F33">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="146*"></ColumnDefinition>
+            <ColumnDefinition Width="135*"></ColumnDefinition>
+            <ColumnDefinition Width="39*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
+            <RowDefinition Height="385"></RowDefinition>
         </Grid.RowDefinitions>
+
+        <!--  Título e Header -->
+        <StackPanel Background="#256fa7" Grid.ColumnSpan="3" />
+        <TextBlock Margin="15,5,15,5" Foreground="White" FontSize="30" Text="Pesquisa de Contratos" />
+
+
+
+        <!-- TextBoxes-->
+        <StackPanel Grid.Row="1">
+            <TextBlock Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">Nome</TextBlock>
+            <TextBox x:Name="Nome" Margin="10" Grid.Row="1" Height="30" FontWeight="DemiBold" Width="590" HorizontalAlignment="Left"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBlock Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">Produto</TextBlock>
+            <TextBox x:Name="Produto" Margin="10" Grid.Row="1" Height="30" FontFamily="Arial" FontWeight="DemiBold" Width="450" HorizontalAlignment="Left"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <TextBlock Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">CPF</TextBlock>
+            <TextBox x:Name="CPF" Margin="10" Grid.Row="1" Height="30" Width="250" HorizontalAlignment="Left" FontWeight="DemiBold"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="330,0,0,0">
+            <TextBlock Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">Contrato</TextBlock>
+            <TextBox x:Name="Contrato" Margin="10" Grid.Row="1" Height="30" Width="250" HorizontalAlignment="Left" FontWeight="DemiBold"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">Data de Vencimento</TextBlock>
+            <TextBox x:Name="DataVencimento" Margin="10" Grid.Row="1" Height="30" Width="250" HorizontalAlignment="Left" FontWeight="DemiBold"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock HorizontalAlignment="Right" Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">Valor do Contrato</TextBlock>
+            <TextBox x:Name="ValorContrato" Margin="10" Grid.Row="1" Height="30" Width="250" HorizontalAlignment="Right"  FontWeight="DemiBold"></TextBox>
+        </StackPanel>
+
+        <!--Pesquisar, Cancelar e Importar-->
+        <Border Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#3d8ecb" Margin="0,0,25,25"  CornerRadius="5" Width="250" Height="65">
+            <Button x:Name="BtnImportar" Foreground="White" BorderThickness="0,0,0,0" Background="Transparent" FontSize="25">
+                Importar Contrato
+            </Button>
+        </Border>
+
+        <Border CornerRadius="5" Margin="25,0,0,25" Grid.Column="0" Grid.Row="3"  Background="SeaGreen"  Width="250" Height="65" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button x:Name="BtnPesquisar" Foreground="White" BorderThickness="0,0,0,0" Background="Transparent" FontSize="25" >Pesquisar</Button>
+        </Border>
+        <Border CornerRadius="5" Margin="0,0,25,25" Grid.Column="1" Grid.Row="3" Background="#8b2e2e" Width="250" Height="65" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+            <Button x:Name="BtnCancelar" Foreground="White" BorderThickness="0,0,0,0" Background="Transparent" FontSize="25" >Cancelar</Button>
+        </Border>
+
     </Grid>
+
 </Window>
