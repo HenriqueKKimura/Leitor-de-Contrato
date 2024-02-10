@@ -6,6 +6,8 @@ using System.Globalization;
 using System.IO;
 using System.Windows;
 using ProjetoMaluco.Views;
+using System.Text;
+using ProjetoMaluco.Services;
 
 namespace ProjetoMaluco.Views
 {
@@ -22,7 +24,7 @@ namespace ProjetoMaluco.Views
         private void BtnImportar_Click(object sender, RoutedEventArgs e)
         {
             PreencherDataGrid();
-            #region Importação de Contratos
+            #region Importação de Contratos (TESTE)
             //var dialog = new OpenFileDialog();
             //dialog.Filter = "Arquivos CSV (*.csv)|*.csv";
 
@@ -78,10 +80,11 @@ namespace ProjetoMaluco.Views
                 {
                     Delimiter = ";",
                     HasHeaderRecord = true //Indica que o arquivo não tem linha de cabeçalho
+
                 };
 
                 // Ler o conteúdo do arquivo CSV
-                using (var reader = new StreamReader(filePath))
+                using (var reader = new StreamReader(filePath, Encoding.UTF8))
                 using (var csv = new CsvReader(reader, csvConfig))
                 {
                     // Mapear manualmente as colunas para as propriedades da classe ArquivoImportado
@@ -92,6 +95,11 @@ namespace ProjetoMaluco.Views
 
                     //Lista está alimentando o DataGrid
                     dataGrid.ItemsSource = records;
+
+
+
+
+
                 }
             }
             #region Popular Lista manualmente (TESTE DATAGRID)
@@ -105,6 +113,38 @@ namespace ProjetoMaluco.Views
             //dataGrid.ItemsSource = arquivos;
 
             #endregion
+        }
+
+        private void BtnSalvar_Click(object sender, RoutedEventArgs e)
+        
+        {
+            var itemsSource = dataGrid.ItemsSource as List<ArquivoImportado>;
+            if (itemsSource != null)
+            {
+                foreach (var item in itemsSource)
+                {
+                    var nome = item.Nome;
+                    var cpf = item.CPF;
+                    var numeroContrato = item.NumeroContrato;
+                    var produto = item.Produto;
+                    var dataVencimento = item.DataVencimento;
+                    var ValorContrato = item.ValorContrato;
+
+                    string insert = $"INSERT INTO db_contratos (db_nome, db_cpf, db_numcontrato, db_produto, db_vencimento, db_valor) " +
+                                    $"VALUES ('{nome}', '{cpf}', '{numeroContrato}', '{produto}', '{dataVencimento}', '{ValorContrato}')";
+
+                    bool gravouContrato = DataService.Insert(insert);
+                    if (gravouContrato)
+                    {
+                        MessageBox.Show("'Sucesso' Contrato inserido no Banco de Dados", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("'ERROR!' Contactar o Administrador", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+
         }
     }
 }

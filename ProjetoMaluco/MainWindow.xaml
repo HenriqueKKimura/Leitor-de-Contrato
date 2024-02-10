@@ -18,7 +18,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="146*"></ColumnDefinition>
             <ColumnDefinition Width="135*"></ColumnDefinition>
-            <ColumnDefinition Width="39*"></ColumnDefinition>
+            
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
@@ -35,8 +35,8 @@
 
         <!-- TextBoxes-->
         <StackPanel Grid.Row="1">
-            <TextBlock Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">Nome</TextBlock>
-            <TextBox x:Name="txtboxnome" Margin="10" Grid.Row="1" Height="30" FontWeight="DemiBold" Width="590" HorizontalAlignment="Left"></TextBox>
+            <TextBlock Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">CPF</TextBlock>
+            <TextBox x:Name="txtboxcpf" Margin="10" Grid.Row="1" Height="30" FontWeight="DemiBold" Width="250" HorizontalAlignment="Left"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
@@ -45,8 +45,8 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0">
-            <TextBlock Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">CPF</TextBlock>
-            <TextBox x:Name="txtboxcpf" Margin="10" Grid.Row="1" Height="30" Width="250" HorizontalAlignment="Left" FontWeight="DemiBold"></TextBox>
+            <TextBlock Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">Nome</TextBlock>
+            <TextBox x:Name="txtboxnome" Margin="10" Grid.Row="1" Height="30" Width="250" HorizontalAlignment="Left" FontWeight="DemiBold"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Margin="330,0,0,0">

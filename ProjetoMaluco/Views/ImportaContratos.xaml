@@ -40,5 +40,10 @@
         <Border Margin="10" Grid.Row="2" Background="#3d8ecb" Width="150" Height="40" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <Button x:Name="BtnImportar" Click="BtnImportar_Click" Background="Transparent" Height="40" Width="150" HorizontalAlignment="Right" FontSize="25" Foreground="White" BorderThickness="0,0,0,0" >Importar</Button>
         </Border>
+        <Border Margin="10" Grid.Row="2" Background="#3d8ecb" Width="150" Height="40" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button x:Name="BtnSalvar" Click="BtnSalvar_Click" Background="Transparent" Height="40" Width="150" HorizontalAlignment="Right" FontSize="25" Foreground="White" BorderThickness="0,0,0,0">Salvar</Button>
+        </Border>
+        
+        
     </Grid>
 </Window>
