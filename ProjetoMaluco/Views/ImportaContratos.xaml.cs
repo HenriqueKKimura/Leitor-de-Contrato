@@ -8,6 +8,7 @@ using ProjetoMaluco.Views;
 using System.Text;
 using ProjetoMaluco.Services;
 using ProjetoMaluco.Entities.ArquivoImportado;
+using System.Windows.Controls;
 
 namespace ProjetoMaluco.Views
 {
@@ -124,14 +125,16 @@ namespace ProjetoMaluco.Views
                     var produto = item.Produto;
                     var dataVencimento = item.DataVencimento;
                     var ValorContrato = item.ValorContrato;
+                    var idFuncionario = item.IdFuncionario;
 
-                    string insert = $"INSERT INTO db_contratos (db_nome, db_cpf, db_numcontrato, db_produto, db_vencimento, db_valor) " +
-                                    $"VALUES ('{nome}', '{cpf}', '{numeroContrato}', '{produto}', '{dataVencimento}', '{ValorContrato}')";
+                    string insert = $"INSERT INTO db_contratos (db_nome, db_cpf, db_numcontrato, db_produto, db_vencimento, db_valor db_idfuncionario) " +
+                                    $"VALUES ('{nome}', '{cpf}', '{numeroContrato}', '{produto}', '{dataVencimento}', '{ValorContrato}', '{idFuncionario}')";
 
                     bool gravouContrato = DataService.Insert(insert);
                     if (gravouContrato)
                     {
                         MessageBox.Show("'Sucesso' Contrato inserido no Banco de Dados", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                        dataGrid.ItemsSource = null;
                     }
                     else
                     {

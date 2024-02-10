@@ -13,12 +13,13 @@
         ResizeMode="NoResize"
         TextElement.FontSize="16" 
         WindowState="Normal"
-        Background="#292F33">
+        Background="#292F33"
+        WindowStyle="None">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="146*"></ColumnDefinition>
             <ColumnDefinition Width="135*"></ColumnDefinition>
-            
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
@@ -28,13 +29,29 @@
         </Grid.RowDefinitions>
 
         <!--  Título e Header -->
-        <StackPanel Background="#256fa7" Grid.ColumnSpan="3" />
+        <StackPanel Background="#256fa7" Grid.ColumnSpan="2" />
         <TextBlock Margin="15,5,15,5" Foreground="White" FontSize="30" Text="Pesquisa de Contratos" />
 
 
 
+        <DataGrid x:Name="dgContratos" Grid.RowSpan="3" Grid.ColumnSpan="2" AutoGenerateColumns="False"
+                  Margin="25,10,25,105" 
+                  AlternatingRowBackground="#D6D6D6" AlternationCount="2"
+                  SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" Grid.Row="1" FontSize="20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="CPF" Binding="{Binding db_cpf}" Width="*"/>
+                <DataGridTextColumn Header="Produto" Binding="{Binding db_produto}" Width="*"/>
+                <DataGridTextColumn Header="Nome" Binding="{Binding db_nome}" Width="*"/>
+                <DataGridTextColumn Header="Contrato" Binding="{Binding db_numcontrato}" Width="*"/>
+                <DataGridTextColumn Header="Data de Vencimento" Binding="{Binding db_vencimento}" Width="*"/>
+                <DataGridTextColumn Header="Valor do Contrato" Binding="{Binding db_valor}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <!--#region Campos em TEXTBOX, DESATIVO devido a tentativa de usar DataGrid para manipulação de dados-->
         <!-- TextBoxes-->
-        <StackPanel Grid.Row="1">
+        <!--<StackPanel Grid.Row="1">
             <TextBlock Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">CPF</TextBlock>
             <TextBox x:Name="txtboxcpf" Margin="10" Grid.Row="1" Height="30" FontWeight="DemiBold" Width="250" HorizontalAlignment="Left"></TextBox>
         </StackPanel>
@@ -62,7 +79,8 @@
         <StackPanel Grid.Row="2" Grid.Column="1">
             <TextBlock HorizontalAlignment="Right" Margin="10" FontSize="25" Foreground="White" FontWeight="Bold">Valor do Contrato</TextBlock>
             <TextBox x:Name="txtboxvalorcontrato" Margin="10" Grid.Row="1" Height="30" Width="250" HorizontalAlignment="Right"  FontWeight="DemiBold"></TextBox>
-        </StackPanel>
+        </StackPanel>-->
+        <!--#endregion-->
 
         <!--Pesquisar, Cancelar e Importar-->
         <Border Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#3d8ecb" Margin="0,0,25,25"  CornerRadius="5" Width="250" Height="65">

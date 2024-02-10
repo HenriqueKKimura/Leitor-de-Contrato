@@ -8,6 +8,7 @@ using CsvHelper.Configuration;
 using System.Windows.Controls;
 using ProjetoMaluco.Services;
 using ProjetoMaluco.Entities.ArquivoImportado;
+using ProjetoMaluco.Entities.BuscaContratos;
 
 
 
@@ -21,11 +22,10 @@ namespace ProjetoMaluco
     {
         public MainWindow()
         {
-
             LoginScreen loginscren = new LoginScreen();
             loginscren.ShowDialog();
-
             InitializeComponent();
+
         }
 
         private void BtnImportar_Click(object sender, RoutedEventArgs e)
@@ -36,10 +36,13 @@ namespace ProjetoMaluco
 
         private void BtnPesquisar_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtboxcpf.Text))
-            {
+            BuscaContratos buscar = new BuscaContratos();
+            buscar.ShowDialog();
 
-                var Contrato = DataService.Select<ArquivoImportado>($"SELECT * FROM db_contratos WHERE db_cpf= '{txtboxcpf.Text}'").FirstOrDefault(); 
+            //Busca os dados da Windows BuscarContratos e Popular o dgContratos da MainWindow
+            if(buscar.ResultadosPesquisa != null && buscar.ResultadosPesquisa.Count > 0)
+            {
+                dgContratos.ItemsSource = buscar.ResultadosPesquisa;
             }
         }
     }

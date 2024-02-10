@@ -10,7 +10,7 @@ namespace ProjetoMaluco.Entities.ArquivoImportado
 {
     public class ArquivoImportado
     {
-
+        public int IdFuncionario { get; set; }
         public string Nome { get; set; }
 
         public string CPF { get; set; }

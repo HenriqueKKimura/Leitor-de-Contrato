@@ -25,7 +25,7 @@
         <StackPanel Background="#256fa7" Grid.Row="0" />
         <TextBlock Margin="15,5,15,5" Foreground="White" FontSize="30" Text="Importar Contratos" />
         <!-- DataGrid -->
-        <DataGrid Background="#292F33" Grid.Row="1" x:Name="dataGrid" AutoGenerateColumns="False" Margin="10" FontSize="19">
+        <DataGrid Background="#292F33" Grid.Row="1" x:Name="dataGrid" AutoGenerateColumns="False" Margin="10" FontSize="19" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*"/>
                 <DataGridTextColumn Header="CPF" Binding="{Binding CPF}" Width="*"/>
