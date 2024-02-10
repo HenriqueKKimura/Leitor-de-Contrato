@@ -1,6 +1,9 @@
-﻿using System;
+﻿using ProjetoMaluco.Entities.Usuarios;
+using ProjetoMaluco.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +22,8 @@ namespace ProjetoMaluco.Views
     /// </summary>
     public partial class LoginScreen : Window
     {
+        //Flag Controle de Validação
+        bool flag;
         public LoginScreen()
         {
             InitializeComponent();
@@ -38,15 +43,12 @@ namespace ProjetoMaluco.Views
             {
                 Close();
             }
-
+            else
+            {
+                MessageBox.Show("'Senha ou Usuário' não são válidos, preencha com Usuário e Senha válidos", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
-
-        private void BtnSair_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
         //Função Validação Login
         public bool ValidaLogin(string usuario, string senha)
         {
@@ -64,20 +66,37 @@ namespace ProjetoMaluco.Views
             }
 
             // Validação de login
-            if (usuario == "teste" && senha == "1234")
-            {
-                return true;
-            }
-            else
+            if (string.IsNullOrEmpty(TxtBoxUser.Text) || string.IsNullOrEmpty(TxtBoxPass.Password))
             {
                 MessageBox.Show("'Senha ou Usuário' não são válidos, preencha com Usuário e Senha válidos", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-
-
+            else
+            {
+                
+                var logon = DataService.Select<Usuario>($"SELECT id_user,db_user,db_passwd FROM db_users WHERE db_user='{TxtBoxUser.Text}' AND db_passwd='{TxtBoxPass.Password}'");
+                
+                if (logon.Count > 0)
+                {
+                    flag = true;
+                    
+                }
+                return flag;
+            }
         }
-
-
-
+        private void BtnSair_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Deseja Sair?", "Atenção", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                Close();
+            }
+            else
+            {
+                TxtBoxUser.Text = string.Empty;
+                TxtBoxPass.Password = string.Empty;
+            }
+        }
     }
 }
+

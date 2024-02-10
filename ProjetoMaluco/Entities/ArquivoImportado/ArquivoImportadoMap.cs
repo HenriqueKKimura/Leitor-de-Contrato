@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoMaluco.Entities
+namespace ProjetoMaluco.Entities.ArquivoImportado
 {
     public class ArquivoImportadoMap : ClassMap<ArquivoImportado>
     {

@@ -1,13 +1,13 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.Win32;
-using ProjetoMaluco.Entities;
 using System.Globalization;
 using System.IO;
 using System.Windows;
 using ProjetoMaluco.Views;
 using System.Text;
 using ProjetoMaluco.Services;
+using ProjetoMaluco.Entities.ArquivoImportado;
 
 namespace ProjetoMaluco.Views
 {
@@ -95,11 +95,6 @@ namespace ProjetoMaluco.Views
 
                     //Lista está alimentando o DataGrid
                     dataGrid.ItemsSource = records;
-
-
-
-
-
                 }
             }
             #region Popular Lista manualmente (TESTE DATAGRID)
